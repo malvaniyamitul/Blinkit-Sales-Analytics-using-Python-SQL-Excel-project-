@@ -1,0 +1,48 @@
+# Load and inspect blinkit_data, then compute KPIs and build requested charts.
+
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+
+# Load data
+df = pd.read_csv("blinkit_data.csv", encoding="UTF-8-SIG")
+
+#data cleaning 
+
+df("item fat content")=df("item fat content").replace({
+                                "LF":"Low fat","low fat"=Low fat,"reg":"regular"})
+
+# Global KPIs
+total_sales =df["Sales"].sum()
+avg_sales =df["Sales"].mean()
+num_items =df["sales"].count()
+avg_rating =df["Rating"].mean()
+
+print("Total Sales:{total_sales:.1f"})
+print("Average Sales: {avg_sales:.1f"})
+print("Number of Items: {num_items:.1f"})
+print("Average Rating: {avg_rating:.1f"})
+
+total_sales - 1,201,681.5
+avg_sales -141
+nam_items-8,523
+avg_rating-4
+
+# Chart requirements 
+
+# 1) Total sales by fat content -
+
+sales_by_fat= df.gropeby("item fat content") ("sales").sum()
+
+plt.pie(sales_by_fat,lebels=sales_by_fat.index,
+                     atopct="%.1f%",
+                    startangel=90)
+plt.tital("sales by fat content")
+plt.show()
+
+#2).Sales by item type -
+
+sales_by_type
+ 
+

@@ -33,7 +33,7 @@ avg_rating-4
 
 # 1) Total sales by fat content -
 
-sales_by_fat= df.gropeby("item fat content") ("sales").sum()
+sales_by_fat= df.groupby("item fat content") ("sales").sum()
 
 plt.pie(sales_by_fat,lebels=sales_by_fat.index,
                      atopct="%.1f%",
@@ -43,6 +43,15 @@ plt.show()
 
 #2).Sales by item type -
 
-sales_by_type
+sales_by_type=df.groupby("item type") ("sales").sum()
+plt.figure(figsize(10,6))
+
+bar=plt.bar(sales _by_type.index,sales_by_type.values)
+plt.xticks(roution=-90)
+plt.xlebels("item type")
+plt.ylebels("total sales")
+plt.title("total sales by item type")
+
+
  
 

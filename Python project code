@@ -1,75 +1,87 @@
-
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+# LOAD DATA
 
-# Load data
 df = pd.read_csv("blinkit_data.csv", encoding="UTF-8-SIG")
 
-#data cleaning 
+# DATA CLEANING
 
-df("item fat content")=df("item fat content").replace({
-                                "LF":"Low fat","low fat"=Low fat,"reg":"regular"})
+df["item fat content"] = df["item fat content"].replace({
+    "LF": "Low Fat",
+    "low fat": "Low Fat",
+    "reg": "Regular"
+})
 
-# Global KPIs
-total_sales =df["Sales"].sum()
-avg_sales =df["Sales"].mean()
-num_items =df["sales"].count()
-avg_rating =df["Rating"].mean()
 
-print("Total Sales:{total_sales:.1f"})
-print("Average Sales: {avg_sales:.1f"})
-print("Number of Items: {num_items:.1f"})
-print("Average Rating: {avg_rating:.1f"})
+# GLOBAL KPIs
 
-total_sales - 1,201,681.5
-avg_sales -141
-nam_items-8,523
-avg_rating-4
+total_sales = df["Sales"].sum()
+avg_sales = df["Sales"].mean()
+num_items = df["Sales"].count()
+avg_rating = df["Rating"].mean()
 
-# Chart requirements 
+print(f"Total Sales: {total_sales:,.1f}")
+print(f"Average Sales: {avg_sales:,.1f}")
+print(f"Number of Items: {num_items:,.1f}")
+print(f"Average Rating: {avg_rating:.1f}")
 
-# 1) Total sales by fat content -
 
-sales_by_fat= df.groupby("item fat content") ("sales").sum()
+# 1) TOTAL SALES BY FAT CONTENT (PIE CHART)
 
-plt.pie(sales_by_fat,lebels=sales_by_fat.index,
-                     atopct="%.1f%",
-                    startangel=90)
-plt.tital("sales by fat content")
+sales_by_fat = df.groupby("item fat content")["Sales"].sum()
+
+plt.figure(figsize=(7,7))
+plt.pie(
+    sales_by_fat,
+    labels=sales_by_fat.index,
+    autopct="%.1f%%",
+    startangle=90
+)
+plt.title("Sales by Fat Content")
 plt.show()
 
-# 2).Sales by item type-
 
-sales_by_type=df.groupby("item type") ("sales").sum()
-plt.figure(figsize(10,6))
+# 2) SALES BY ITEM TYPE (BAR CHART)
 
-bar=plt.bar(sales _by_type.index,sales_by_type.values)
-plt.xticks(roution=-90)
-plt.xlebels("item type")
-plt.ylebels("total sales")
-plt.title("total sales by item type")
+sales_by_type = df.groupby("item type")["Sales"].sum()
 
-   for bar in bars:
-  plt.text(bar.get_x()+bar.get_width()/2, bar.get_hight,
-           f'{bar.get_hight:,.of}',ha='center',va='bottom',fountsize=8)
-  
- plt.show()
+plt.figure(figsize=(12,6))
+bars = plt.bar(sales_by_type.index, sales_by_type.values)
+plt.xticks(rotation=90)
+plt.xlabel("Item Type")
+plt.ylabel("Total Sales")
+plt.title("Total Sales by Item Type")
 
+# Add value labels
+for bar in bars:
+    height = bar.get_height()
+    plt.text(
+        bar.get_x() + bar.get_width() / 2,
+        height,
+        f"{height:,.0f}",
+        ha="center", va="bottom", fontsize=8
+    )
 
-# 3). Fat content by outlet for total sales -
-
-grouped=df.groupby({"outlet location type","item fat content"})("sales").sum()
-grouped=df.groupby({"regular","Low fat"})
-
-ax=grouped.plot(kind="bar",figsize=(8,5),tital=("outlet tier by fat content")
-plt.xlabel=("outlet location tier")
-plt.ylabel=("total sales")
-plt.legend=(tital="item fat content")
 plt.show()
 
-#4).  Total Sales by Outlet Establishment Year
+
+# 3) FAT CONTENT SALES BY OUTLET LOCATION TYPE
+
+grouped = df.groupby(["outlet location type", "item fat content"])["Sales"].sum().unstack()
+
+plt.figure(figsize=(8,5))
+grouped.plot(kind="bar", figsize=(10,6))
+
+plt.title("Outlet Location Type by Fat Content")
+plt.xlabel("Outlet Location Type")
+plt.ylabel("Total Sales")
+plt.legend(title="Item Fat Content")
+plt.tight_layout()
+plt.show()
+
+# 4) TOTAL SALES BY OUTLET ESTABLISHMENT YEAR
 
 
 sales_by_year = df.groupby('Outlet Establishment Year')['Sales'].sum().sort_index()
@@ -79,18 +91,21 @@ plt.plot(sales_by_year.index, sales_by_year.values, marker='o', linestyle='-')
 
 plt.xlabel('Outlet Establishment Year')
 plt.ylabel('Total Sales')
-plt.title('Outlet Establishment')
+plt.title('Total Sales by Outlet Establishment Year')
 
+# Add labels
 for x, y in zip(sales_by_year.index, sales_by_year.values):
-    plt.text(x, y, f'{y:.0f}', ha='center', va='bottom', fontsize=8)
+    plt.text(x, y, f'{y:,.0f}', ha='center', va='bottom', fontsize=8)
 
+plt.grid(True, linestyle='--', alpha=0.5)
 plt.show()
 
-# 5). Sales by Outlet Size -
+
+# 5) SALES BY OUTLET SIZE (PIE CHART)
 
 sales_by_size = df.groupby('Outlet Size')['Sales'].sum()
 
-plt.figure(figsize=(4, 4))
+plt.figure(figsize=(5, 5))
 plt.pie(
     sales_by_size,
     labels=sales_by_size.index,
@@ -98,22 +113,29 @@ plt.pie(
     startangle=90
 )
 
-plt.title('Outlet Size')
+plt.title('Sales by Outlet Size')
 plt.show()
 
-@ 6). # Sales by Outlet Location-
+
+
+# 6) SALES BY OUTLET LOCATION TYPE (BAR CHART)
+
 
 sales_by_location = df.groupby('Outlet Location Type')['Sales'].sum().reset_index()
 sales_by_location = sales_by_location.sort_values('Sales', ascending=False)
 
-plt.figure(figsize=(8, 3))  # Smaller height, enough width
+plt.figure(figsize=(9, 4))
 ax = sns.barplot(x='Sales', y='Outlet Location Type', data=sales_by_location)
 
 plt.title('Total Sales by Outlet Location Type')
 plt.xlabel('Total Sales')
 plt.ylabel('Outlet Location Type')
+
+# Add text labels
+for index, row in sales_by_location.iterrows():
+    plt.text(row['Sales'], index, f"{row['Sales']:,.0f}", va='center')
+
+plt.tight_layout()
 plt.show()
 
-#END........................................................................
-
-
+# END -----------------------------------------------------------------------

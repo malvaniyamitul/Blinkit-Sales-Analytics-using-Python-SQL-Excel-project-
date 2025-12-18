@@ -165,7 +165,9 @@ Insight-driven Decision Making
 
 👤 Author
 
-Malvaniya mitul               Aspiring Data Analyst
+Malvaniya mitul    
+
+Aspiring Data Analyst
 Skills: Python | SQL | Excel | Data Visualization
 
 

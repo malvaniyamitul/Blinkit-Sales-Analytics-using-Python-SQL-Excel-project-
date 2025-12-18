@@ -1,6 +1,6 @@
 #Blinkit Sales Insights & Performance Analysis
 
-📌 Project Overview 
+📌 PROJECT OVERVIEW 
 
 This project delivers an end-to-end sales analytics and KPI intelligence solution for Blinkit (India’s last-minute delivery app) using Python, SQL, and Excel.
 It transforms raw sales data into actionable business insights through structured querying, analysis, and visualization.
@@ -8,7 +8,7 @@ It transforms raw sales data into actionable business insights through structure
 
 ---
 
-🎯 Business Objective
+🎯 BUSINESS OBJECTIVES 
 
 Track core sales KPIs
 
@@ -22,17 +22,17 @@ Support data-driven business decisions
 
 ---
 
-🛠️ Tools & Technologies Used
+🛠️ TOOLS & TECHNOLOGIES USED 
 
-Python – Data cleaning, EDA, visualization (Pandas, Matplotlib)
+Python – Data cleaning, EDA, visualization (Pandas, Matplotlib,seborn)
 
 SQL – KPI calculation, aggregations, business queries
 
-Excel – Pivot tables, charts, summary analysis
+Excel – Pivot tables, charts,power query,summary analysis
 
 _ _ _
 
-📊 Key KPIs Tracked
+📊 KEY KPIs TRACKED 
 
 Total Sales: ₹1.20 Million
 
@@ -79,7 +79,7 @@ Percentage contribution using window functions
 
 ---
 
-📈 Key Business Insights
+📈 KEY BUSINESS INSIGHTS 
 
 🥗 Product Strategy
 
@@ -110,7 +110,7 @@ Frozen Foods
 
 ---
 
-🏙️ Location Intelligence
+🏙️ LOCATION INTELLIGENCE 
 
 Tier 3 outlets generate the highest sales (≈39%)
 
@@ -147,7 +147,7 @@ Older outlets show lower sales contribution
 _ _ _
 
 
-🧠 Skills Demonstrated
+🧠 SKILLS DEMONSTRATED 
 
 KPI Tracking & Business Analytics
 
@@ -163,12 +163,13 @@ Insight-driven Decision Making
 
 ---
 
-👤 Author
+👤 AUTHOR 
 
 Malvaniya mitul    
 
 Aspiring Data Analyst
-Skills: Python | SQL | Excel | Data Visualization
+
+Skills: Python | SQL | Excel |Power bi
 
 
 _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 

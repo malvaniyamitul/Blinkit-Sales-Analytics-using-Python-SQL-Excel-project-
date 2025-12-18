@@ -48,9 +48,9 @@ These KPIs form the foundation for deeper performance analysis.
 
 ---
 
-🧮 SQL Analytics Coverage
+🧮 SQL ANALYTICS COVERAGE 
 
-The SQL layer answers real business questions, including:
+The SQL layer answers real business questions, 
 
 Sales performance by Item Fat Content
 
